@@ -1,22 +1,32 @@
 import './globals.css';
 import { Header } from '@/app/components/Header';
+import { Footer } from '@/app/components/Footer';
+import { ThemeProvider } from '@/app/components/ThemeProvider';
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Growth.meta | Digital Marketing Agency',
+  description: 'A full-service digital marketing agency that helps businesses grow and succeed online.',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-50 dark:bg-gray-900">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          {children}
-        </main>
-        <footer className="text-center py-4 text-gray-600 dark:text-gray-400">
-          <p>&copy; 2024 My Blog. All rights reserved.</p>
-        </footer>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-[#F8F7F4] dark:bg-[#1a202c] text-[#1a202c] dark:text-[#F8F7F4]`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
