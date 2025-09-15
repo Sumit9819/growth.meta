@@ -1,4 +1,4 @@
-import { getPost } from '../../lib/data';
+import { getPost } from '../../../lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import MarkdownIt from 'markdown-it';
