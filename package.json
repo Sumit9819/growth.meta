@@ -11,22 +11,27 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "@vercel/blob": "^1.1.1",
     "@vercel/postgres": "^0.10.0",
+    "@vercel/postgres-kysely": "^0.10.0",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "zod": "^4.1.8"
   },
   "devDependencies": {
-    "@swc-node/register": "^1.10.9",
     "@eslint/eslintrc": "^3",
+    "@swc-node/register": "^1.10.9",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.2",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
   }
 }

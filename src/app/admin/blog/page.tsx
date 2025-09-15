@@ -1,11 +1,10 @@
 
-import { adminDb } from "@/lib/firebase";
+import { sql } from '@vercel/postgres';
 import Link from "next/link";
 import DeletePostButton from "@/components/DeletePostButton";
 
 export default async function BlogAdminPage() {
-  const postsSnap = await adminDb.collection('blog').orderBy('createdAt', 'desc').get();
-  const posts = postsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  const { rows: posts } = await sql`SELECT * FROM blog_posts ORDER BY created_at DESC`;
 
   return (
     <div>
@@ -29,7 +28,7 @@ export default async function BlogAdminPage() {
             {posts.map(post => (
               <tr key={post.id} className="border-b border-gray-700">
                 <td className="p-4">{post.title}</td>
-                <td className="p-4">{new Date(post.createdAt.seconds * 1000).toLocaleDateString()}</td>
+                <td className="p-4">{new Date(post.created_at).toLocaleDateString()}</td>
                 <td className="p-4">
                   <Link href={`/admin/blog/${post.id}/edit`} className="text-blue-500 hover:underline mr-4">
                     Edit

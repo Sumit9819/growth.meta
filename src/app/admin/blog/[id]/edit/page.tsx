@@ -1,12 +1,16 @@
 
-import { adminDb } from "@/lib/firebase";
-import { updatePost } from "../../actions";
+import { sql } from '@vercel/postgres';
+import { updatePost } from '../actions';
 
 export default async function EditPostPage({ params }: { params: { id: string } }) {
-  const postSnap = await adminDb.collection('blog').doc(params.id).get();
-  const post = { id: postSnap.id, ...postSnap.data() };
+  const postId = parseInt(params.id, 10);
+  const { rows: [post] } = await sql`SELECT * FROM blog_posts WHERE id = ${postId}`;
 
-  const updatePostWithId = updatePost.bind(null, post.id);
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+
+  const updatePostWithId = updatePost.bind(null, postId);
 
   return (
     <div>
@@ -19,8 +23,19 @@ export default async function EditPostPage({ params }: { params: { id: string } 
             type="text"
             id="title"
             name="title"
-            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             defaultValue={post.title}
+            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="slug" className="block mb-2">Slug</label>
+          <input
+            type="text"
+            id="slug"
+            name="slug"
+            defaultValue={post.slug}
+            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             required
           />
         </div>
@@ -29,9 +44,9 @@ export default async function EditPostPage({ params }: { params: { id: string } 
           <textarea
             id="content"
             name="content"
-            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             rows={10}
             defaultValue={post.content}
+            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             required
           />
         </div>

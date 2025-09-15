@@ -1,5 +1,5 @@
 
-import { createPost } from "../actions";
+import { createPost } from "./actions";
 
 export default function NewPostPage() {
   return (
@@ -18,12 +18,22 @@ export default function NewPostPage() {
           />
         </div>
         <div>
+          <label htmlFor="slug" className="block mb-2">Slug</label>
+          <input
+            type="text"
+            id="slug"
+            name="slug"
+            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
+            required
+          />
+        </div>
+        <div>
           <label htmlFor="content" className="block mb-2">Content</label>
           <textarea
             id="content"
             name="content"
-            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             rows={10}
+            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
             required
           />
         </div>

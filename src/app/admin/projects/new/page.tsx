@@ -27,23 +27,12 @@ export default function NewProjectPage() {
           />
         </div>
         <div>
-          <label htmlFor="imageUrl" className="block mb-2">Image URL</label>
+          <label htmlFor="github_url" className="block mb-2">GitHub URL</label>
           <input
             type="text"
-            id="imageUrl"
-            name="imageUrl"
+            id="github_url"
+            name="github_url"
             className="w-full bg-gray-800 border border-gray-700 rounded p-2"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="url" className="block mb-2">Project URL</label>
-          <input
-            type="text"
-            id="url"
-            name="url"
-            className="w-full bg-gray-800 border border-gray-700 rounded p-2"
-            required
           />
         </div>
         <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">

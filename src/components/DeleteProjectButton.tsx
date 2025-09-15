@@ -3,9 +3,9 @@
 
 import { deleteProject } from "@/app/admin/projects/actions";
 
-export default function DeleteProjectButton({ projectId }: { projectId: string }) {
+export default function DeleteProjectButton({ projectId }: { projectId: number }) {
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this project?")) {
+    if (confirm('Are you sure you want to delete this project?')) {
       await deleteProject(projectId);
     }
   };

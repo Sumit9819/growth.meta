@@ -3,9 +3,9 @@
 
 import { deletePost } from "@/app/admin/blog/actions";
 
-export default function DeletePostButton({ postId }: { postId: string }) {
+export default function DeletePostButton({ postId }: { postId: number }) {
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
+    if (confirm('Are you sure you want to delete this post?')) {
       await deletePost(postId);
     }
   };

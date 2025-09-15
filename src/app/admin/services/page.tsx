@@ -3,6 +3,13 @@ import { sql } from '@/lib/db';
 import Link from 'next/link';
 import { deleteService } from './actions';
 
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  order: number;
+}
+
 export default async function ServicesAdminPage() {
   const { rows: services } = await sql`SELECT * FROM services ORDER BY "order"`;
 
@@ -26,7 +33,7 @@ export default async function ServicesAdminPage() {
             </tr>
           </thead>
           <tbody>
-            {services.map((service: any) => (
+            {services.map((service: Service) => (
               <tr key={service.id} className="border-b border-gray-700">
                 <td className="p-4">{service.title}</td>
                 <td className="p-4">{service.description}</td>
