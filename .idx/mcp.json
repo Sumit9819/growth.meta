@@ -8,5 +8,23 @@
         "experimental:mcp"
       ]
     }
+  },
+  "firestore": {
+    "collections": {
+      "testimonials": {
+        "documents": {
+          "testimonial1": {
+            "quote": "This is a great company!",
+            "author": "John Doe",
+            "authorImage": "/placeholder.jpg"
+          },
+          "testimonial2": {
+            "quote": "I am very happy with their services.",
+            "author": "Jane Doe",
+            "authorImage": "/placeholder.jpg"
+          }
+        }
+      }
+    }
   }
 }
